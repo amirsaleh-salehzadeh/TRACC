@@ -4,10 +4,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
+//import io.swagger.annotations.*;
 
 import com.example.CCINETApplication.exception.NotFoundException;
 import com.example.CCINETApplication.model.User;
 import com.example.CCINETApplication.repository.UserRepository;
+
+//import io.swagger.annotations.ApiOperation;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,12 +25,22 @@ public class UserController {
 	}
 
 	@GetMapping
+//	@ApiOperation("Get a list of all users")
+//    @ApiResponses({
+//        @ApiResponse(code = 200, message = "List of users retrieved successfully"),
+//        @ApiResponse(code = 500, message = "Internal server error")
+//    })
 	public ResponseEntity<List<User>> listUsers() {
 		List<User> users = userRepository.findAll();
 		return ResponseEntity.ok(users);
 	}
 
 	@PostMapping
+//	@ApiOperation("Create a new user")
+//    @ApiResponses({
+//        @ApiResponse(code = 201, message = "User created successfully"),
+//        @ApiResponse(code = 409, message = "Conflict - Username already exists")
+//    })
 	public ResponseEntity<?> createUser(@RequestBody User user) {
 		if (userRepository.existsByUsername(user.getUsername())) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already exists."); // Username conflict
@@ -36,6 +49,11 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
 	}
 
+//	@ApiOperation("Get information about a specific user")
+//    @ApiResponses({
+//        @ApiResponse(code = 200, message = "User information retrieved successfully"),
+//        @ApiResponse(code = 404, message = "User not found")
+//    })
     @GetMapping("/{userId}")
     public ResponseEntity<?> getUserInfo(@PathVariable Long userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
