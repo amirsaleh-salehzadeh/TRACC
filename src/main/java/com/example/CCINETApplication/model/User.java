@@ -4,68 +4,82 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="appUsers")
+@Table(name = "appUsers", indexes = {
+        @Index(name = "idx_username", columnList = "username")
+		})
 public class User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String username;
-    private String firstname;
-    private String surname;
+	@Column(name = "username")
+	private String username;
+	@Column(name = "firstname")
+	private String firstname;
+	@Column(name = "surname")
+	private String surname;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Task> tasks;
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<Task> tasks;
 
-    public User() {
-    }
+	public User() {
+	}
 
-    public User(String username, String firstname, String surname) {
-        this.username = username;
-        this.firstname = firstname;
-        this.surname = surname;
-    }
+	public User(String username, String firstname, String surname) {
+		this.username = username;
+		this.firstname = firstname;
+		this.surname = surname;
+	}
 
-    // Getters and setters
+	// Getters and setters
 
-    public Long getId() {
-        return id;
-    }
+	public User(Long id, String username, String firstname, String surname, List<Task> tasks) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.firstname = firstname;
+		this.surname = surname;
+		this.tasks = tasks;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public String getUsername() {
+		return username;
+	}
 
-    public String getFirstname() {
-        return firstname;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+	public String getFirstname() {
+		return firstname;
+	}
 
-    public String getSurname() {
-        return surname;
-    }
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
 
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
+	public String getSurname() {
+		return surname;
+	}
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
 }

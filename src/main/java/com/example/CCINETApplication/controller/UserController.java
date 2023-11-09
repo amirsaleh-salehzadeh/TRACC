@@ -2,6 +2,7 @@ package com.example.CCINETApplication.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.CCINETApplication.exception.NotFoundException;
