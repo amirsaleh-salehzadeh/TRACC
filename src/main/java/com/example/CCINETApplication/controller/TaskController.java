@@ -26,7 +26,6 @@ public class TaskController {
     }
 
     @GetMapping
-    @Async
     public ResponseEntity<?> listTasksForUser(@PathVariable Long userId) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isEmpty()) {
@@ -38,7 +37,6 @@ public class TaskController {
     }
 
     @PostMapping
-    @Async
     public ResponseEntity<?> createTaskForUser(@PathVariable Long userId, @RequestBody Task task) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isEmpty()) {
@@ -53,7 +51,6 @@ public class TaskController {
     }
 
     @GetMapping("/{taskId}")
-    @Async
     public ResponseEntity<?> getTaskInfo(@PathVariable Long userId, @PathVariable Long taskId) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isEmpty()) {
@@ -70,7 +67,6 @@ public class TaskController {
     }
 
     @PutMapping("/{taskId}")
-    @Async
     public ResponseEntity<?> updateTaskForUser(@PathVariable Long userId, @PathVariable Long taskId, @RequestBody Task updatedTask) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isEmpty()) {
@@ -93,7 +89,6 @@ public class TaskController {
     }
 
     @DeleteMapping("/{taskId}")
-    @Async
     public ResponseEntity<?> deleteTaskForUser(@PathVariable Long userId, @PathVariable Long taskId) {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isEmpty()) {

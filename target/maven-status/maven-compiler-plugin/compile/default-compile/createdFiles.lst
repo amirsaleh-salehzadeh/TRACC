@@ -1,0 +1,12 @@
+com\example\CCINETApplication\service\TaskSchedulerService.class
+com\example\CCINETApplication\AsyncConfig.class
+com\example\CCINETApplication\CcinetApplication.class
+com\example\CCINETApplication\controller\TaskController.class
+com\example\CCINETApplication\controller\UserController.class
+com\example\CCINETApplication\exception\NotFoundException.class
+com\example\CCINETApplication\model\Task.class
+com\example\CCINETApplication\model\TaskStatus.class
+com\example\CCINETApplication\repository\UserRepository.class
+com\example\CCINETApplication\model\User.class
+com\example\CCINETApplication\service\TaskService.class
+com\example\CCINETApplication\repository\TaskRepository.class
